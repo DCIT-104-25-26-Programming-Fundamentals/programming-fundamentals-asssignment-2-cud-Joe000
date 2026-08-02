@@ -34,7 +34,6 @@
 //   print an error message and stop.
 //
 
-//
 // =============================================================================
 // YOUR CODE BELOW — remove the // symbols from the scaffold and fill it in
 // =============================================================================
@@ -42,3 +41,77 @@
 #include <iostream>
 using namespace std;
 
+// Function to calculate the sum of all elements in the array
+int calculateSum(int arr[], int size) {
+    int sum = 0;
+    for (int i = 0; i < size; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// Function to calculate the average of all elements in the array
+double calculateAverage(int arr[], int size) {
+    int sum = calculateSum(arr, size);
+    return static_cast<double>(sum) / size;
+}
+
+// Function to find the maximum element in the array
+int findMaximum(int arr[], int size) {
+    int max = arr[0]; // Assume first element is the maximum
+    for (int i = 1; i < size; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+        }
+    }
+    return max;
+}
+
+// Function to find the minimum element in the array
+int findMinimum(int arr[], int size) {
+    int min = arr[0]; // Assume first element is the minimum
+    for (int i = 1; i < size; i++) {
+        if (arr[i] < min) {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+
+int main() {
+    int n;
+    
+    // Prompt user for the number of elements
+    cout << "How many numbers? ";
+    cin >> n;
+    
+    // Validate that n is positive
+    if (n <= 0) {
+        cout << "Error: Number of elements must be positive." << endl;
+        return 1; // Exit with error code
+    }
+    
+    // Create an array of size n
+    int numbers[n];
+    
+    // Read numbers from the user
+    for (int i = 0; i < n; i++) {
+        cout << "Enter number " << (i + 1) << ": ";
+        cin >> numbers[i];
+    }
+    
+    // Calculate statistics using the functions
+    int sum = calculateSum(numbers, n);
+    double average = calculateAverage(numbers, n);
+    int max = findMaximum(numbers, n);
+    int min = findMinimum(numbers, n);
+    
+    // Display the results
+    cout << "\nResults:" << endl;
+    cout << "Sum:     " << sum << endl;
+    cout << "Average: " << average << endl;
+    cout << "Maximum: " << max << endl;
+    cout << "Minimum: " << min << endl;
+    
+    return 0;
+}
