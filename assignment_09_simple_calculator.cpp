@@ -73,3 +73,133 @@
 #include <cmath>
 using namespace std;
 
+// Function to display the menu
+void showMenu() {
+    cout << "\n============================" << endl;
+    cout << "     SIMPLE CALCULATOR" << endl;
+    cout << "============================" << endl;
+    cout << "1. Addition" << endl;
+    cout << "2. Subtraction" << endl;
+    cout << "3. Multiplication" << endl;
+    cout << "4. Division" << endl;
+    cout << "5. Modulus" << endl;
+    cout << "6. Exponentiation" << endl;
+    cout << "7. Quit" << endl;
+    cout << "Select an operation (1-7): ";
+}
+
+// Function to get two numbers from the user
+void getNumbers(double& a, double& b) {
+    cout << "Enter first number : ";
+    cin >> a;
+    cout << "Enter second number: ";
+    cin >> b;
+}
+
+// Addition function
+void add() {
+    double a, b;
+    getNumbers(a, b);
+    cout << "Result: " << a << " + " << b << " = " 
+         << fixed << setprecision(2) << (a + b) << endl;
+}
+
+// Subtraction function
+void subtract() {
+    double a, b;
+    getNumbers(a, b);
+    cout << "Result: " << a << " - " << b << " = " 
+         << fixed << setprecision(2) << (a - b) << endl;
+}
+
+// Multiplication function
+void multiply() {
+    double a, b;
+    getNumbers(a, b);
+    cout << "Result: " << a << " * " << b << " = " 
+         << fixed << setprecision(2) << (a * b) << endl;
+}
+
+// Division function
+void divide() {
+    double a, b;
+    getNumbers(a, b);
+    
+    if (b == 0) {
+        cout << "Error: Cannot divide by zero." << endl;
+        return;
+    }
+    
+    cout << "Result: " << a << " / " << b << " = " 
+         << fixed << setprecision(2) << (a / b) << endl;
+}
+
+// Modulus function (only works with integers)
+void modulus() {
+    int a, b;
+    cout << "Enter first number : ";
+    cin >> a;
+    cout << "Enter second number: ";
+    cin >> b;
+    
+    if (b == 0) {
+        cout << "Error: Cannot perform modulus by zero." << endl;
+        return;
+    }
+    
+    cout << "Result: " << a << " % " << b << " = " << (a % b) << endl;
+}
+
+// Exponentiation function
+void exponentiate() {
+    double a, b;
+    getNumbers(a, b);
+    double result = pow(a, b);
+    cout << "Result: " << a << " ^ " << b << " = " 
+         << fixed << setprecision(2) << result << endl;
+}
+
+int main() {
+    int choice;
+    
+    do {
+        showMenu();
+        cin >> choice;
+        
+        switch (choice) {
+            case 1:
+                add();
+                break;
+                
+            case 2:
+                subtract();
+                break;
+                
+            case 3:
+                multiply();
+                break;
+                
+            case 4:
+                divide();
+                break;
+                
+            case 5:
+                modulus();
+                break;
+                
+            case 6:
+                exponentiate();
+                break;
+                
+            case 7:
+                cout << "Goodbye!" << endl;
+                break;
+                
+            default:
+                cout << "Invalid choice. Please select a number between 1 and 7." << endl;
+                break;
+        }
+    } while (choice != 7);
+    
+    return 0;
+}
