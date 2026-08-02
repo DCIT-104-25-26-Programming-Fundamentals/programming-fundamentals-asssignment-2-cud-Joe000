@@ -13,14 +13,14 @@
 // EXPECTED INPUT / OUTPUT EXAMPLES
 // -----------------------------------------------------------------------------
 //
-//   Enter a number: 7
-//   7 is a prime number.
+//   Enter a number: 7
+//   7 is a prime number.
 //
-//   Enter a number: 10
-//   10 is NOT a prime number.
+//   Enter a number: 10
+//   10 is NOT a prime number.
 //
-//   Enter a number: 1
-//   1 is NOT a prime number.
+//   Enter a number: 1
+//   1 is NOT a prime number.
 //
 // -----------------------------------------------------------------------------
 // REQUIREMENTS
@@ -37,3 +37,41 @@
 #include <iostream>
 using namespace std;
 
+// Function to check if a number is prime
+// Returns true if the number is prime, false otherwise
+bool isPrime(int n) {
+    // Numbers less than 2 are not prime
+    if (n < 2) {
+        return false;
+    }
+    
+    // Check for divisors from 2 to n-1
+    // We can optimize by checking up to sqrt(n), but for simplicity,
+    // we'll check all numbers from 2 to n-1
+    for (int i = 2; i < n; i++) {
+        // If n is divisible by i, it's not prime
+        if (n % i == 0) {
+            return false;
+        }
+    }
+    
+    // If no divisors found, the number is prime
+    return true;
+}
+
+int main() {
+    int number;
+    
+    // Prompt user for input
+    cout << "Enter a number: ";
+    cin >> number;
+    
+    // Call isPrime() and display the result
+    if (isPrime(number)) {
+        cout << number << " is a prime number." << endl;
+    } else {
+        cout << number << " is NOT a prime number." << endl;
+    }
+    
+    return 0;
+}
